@@ -1,11 +1,31 @@
-$.ajax({
-        url: queryURL,
-        method: "GET",
-        async : false,
-        success: function(data){
-        var elem = document.getElementById("myBar");
-        elem.style.width = ((finalCount + 1)/originalNumberOfAddress) * 100 + '%';
-    }
-      }).done(function(response) {
-        console.log(response);
-        };
+<!DOCTYPE html> 
+<html lang="en-us"> 
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+    <title>ParkProwler.com</title>
+</head>
+
+<body>
+    <div class='container'>
+    <div class="row">
+        <div class="form-group">
+            <label for="trainName">Search Location</label>
+            <input class="form-control" id="searchLocation" type="text">
+          </div>
+          <div class="form-group">
+            <label for="trainName">Distance From Location</label>
+            <input class="form-control" id="distanceLocation" type="text">
+          </div>
+    </div>
+    </div>
+</body>
+
+</html>
