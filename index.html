@@ -1,0 +1,11 @@
+$.ajax({
+        url: queryURL,
+        method: "GET",
+        async : false,
+        success: function(data){
+        var elem = document.getElementById("myBar");
+        elem.style.width = ((finalCount + 1)/originalNumberOfAddress) * 100 + '%';
+    }
+      }).done(function(response) {
+        console.log(response);
+        };
