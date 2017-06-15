@@ -1,0 +1,29 @@
+{
+  "name": "firstgroupproject",
+  "version": "1.0.0",
+  "description": "FirstGroupProject",
+  "engines": {
+    "node": "6.10.2"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ejs": "2.5.6",
+    "express": "4.15.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lchambers6/FirstGroupProject.git"
+  },
+  "author": "Luke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lchambers6/FirstGroupProject/issues"
+  },
+  "homepage": "https://github.com/lchambers6/FirstGroupProject#readme",
+  "dependencies": {
+    "heroku": "^0.2.0"
+  }
+}
