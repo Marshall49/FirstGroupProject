@@ -1,49 +1,38 @@
+var myJson = [];
 $.ajax({
         url: "http://api.amp.active.com/camping/campgrounds?pstate=CO&amenity=4001&sewer=3007&api_key=tevg8efq2e83yy8hzhhp99ns",
         method: "GET",
-      }).done(function(response) {
-        console.log(response);
-        console.log(xmlToJson(response));
-    });
+        dataType: "xml",
+        success: xmlParser
+      })
 
-function xmlToJson(xml) {
+function xmlParser(xml) {
+	$(xml).find("result").each(function(i){
+		myJson[i] = {agencyIcon: $(this).attr("agencyIcon"),
+					agencyName: $(this).attr("agencyName"),
+					availabilityStatus: $(this).attr("availabilityStatus"),
+					contractID: $(this).attr("contractID"),
+					contractType: $(this).attr("contractType"),
+					facilityID: $(this).attr("facilityID"),
+					facilityName: $(this).attr("facilityName"),
+					State: $(this).attr("State"),
+					Park: $(this).attr("Park"),
+					faciltyPhoto: $(this).attr("faciltyPhoto"),
+					favorite: $(this).attr("favorite"),
+					latitude: $(this).attr("latitude"),
+					listingOnly: $(this).attr("listingOnly"),
+					longitude: $(this).attr("longitude"),
+					regionName: $(this).attr("regionName"),
+					reservationChannel: $(this).attr("reservationChannel"),
+					shortName: $(this).attr("shortName"),
+					sitesWithAmps: $(this).attr("sitesWithAmps"),
+					sitesWithPetsAllowed: $(this).attr("sitesWithPetsAllowed"),
+					sitesWithSewerHookup: $(this).attr("sitesWithSewerHookup"),
+					sitesWithWaterHookup: $(this).attr("sitesWithWaterHookup"),
+					sitesWithWaterfront: $(this).attr("sitesWithWaterfront"),
+					state: $(this).attr("state")};
 
-	// Create the return object
-	var obj = {};
+		console.log(myJson);
+	});
+};
 
-	if (xml.nodeType == 1) { // element
-		// do attributes
-		if (xml.attributes.length > 0) {
-		obj["@attributes"] = {};
-			for (var j = 0; j < xml.attributes.length; j++) {
-				var attribute = xml.attributes.item(j);
-				obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
-			}
-		}
-	} else if (xml.nodeType == 3) { // text
-		obj = xml.nodeValue;
-	}
-
-	// do children
-	// If just one text node inside
-	if (xml.hasChildNodes() && xml.childNodes.length === 1 && xml.childNodes[0].nodeType === 3) {
-		obj = xml.childNodes[0].nodeValue;
-	}
-	else if (xml.hasChildNodes()) {
-		for(var i = 0; i < xml.childNodes.length; i++) {
-			var item = xml.childNodes.item(i);
-			var nodeName = item.nodeName;
-			if (typeof(obj[nodeName]) == "undefined") {
-				obj[nodeName] = xmlToJson(item);
-			} else {
-				if (typeof(obj[nodeName].push) == "undefined") {
-					var old = obj[nodeName];
-					obj[nodeName] = [];
-					obj[nodeName].push(old);
-				}
-				obj[nodeName].push(xmlToJson(item));
-			}
-		}
-	}
-	return obj;
-}
