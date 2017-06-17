@@ -1,13 +1,55 @@
-body {
+/*body {
   height: 100%;
-  width:100%;
-  background-color: black;
+  width:100%;*/
+  /*background-color: black;*/
   /*background-image: url(assets/images/img1.jpg);*/
 
 }
 
+.homepage-hero-module {
+    border-right: none;
+    border-left: none;
+    position: relative;
+}
+.no-video .video-container video,
+.touch .video-container video {
+    display: none;
+}
+.no-video .video-container .poster,
+.touch .video-container .poster {
+    display: block !important;
+}
+.video-container {
+    position: relative;
+    bottom: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+}
+.video-container .poster img {
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+}
+.video-container .filter {
+    z-index: 100;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    width: 100%;
+}
+.video-container video {
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+}
+.video-container video.fillWidth {
+    width: 100%;
+}
 
-#state-list {
+
+/*#state-list {
   overflow: auto;
 }
 
@@ -16,10 +58,14 @@ body {
   text-align: center;
   display: table;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}*/
+.masthead-nav {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin-right: 50px;
+  z-index: 1;
 }
-
-
-
 
 .masthead-nav > li {
   display: inline-block;
@@ -34,37 +80,35 @@ body {
   padding-left: 0;
   font-size: 16px;
   font-weight: bold;
-  color: #fff;
-  color: rgba(255,255,255,.75);
   border-bottom: 2px solid transparent;
   margin-top: 50px;
+  color: #AA735C;
 }
 .masthead-nav > li > a:hover,
 .masthead-nav > li > a:focus {
   background-color: transparent;
   border-bottom-color: #a9a9a9;
   border-bottom-color: rgba(255,255,255,.25);
+  color: #E5C799;
 }
 .masthead-nav > .active > a,
 .masthead-nav > .active > a:hover,
 .masthead-nav > .active > a:focus {
-  color: #fff;
-  border-bottom-color: #fff;
+  border-bottom-color: 	#228B22;
 }
 
-.images{
-  /*background-position: center;
-  height:100%;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;*/
-  position: fixed;
-}
 
 .text{
   font-family: 'Playfair Display SC', serif;
   font-size: 40px;
-  margin-top: 80px;
-  display: table;
+  position: absolute;
+  top: 170px;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+  color: white;
+  text-shadow: 3px 3px #AA735C;
+
 }
 
 a:hover { text-decoration: underline }
@@ -82,7 +126,7 @@ input {
 }
 
 input[type=text] {
-    width: 130px;
+    width: 150px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
@@ -94,6 +138,7 @@ input[type=text] {
     padding: 12px 20px 12px 40px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
+
 }
 
 input[type=text]:focus {
