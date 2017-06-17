@@ -20,8 +20,30 @@ function googleUrl(address) {
   googleAPI(googleURL);
 };
 
+var homeAddress = "";	// home address from user input
+var homeLat = ""; 	// Latitude from googleAPI 
+var homeLng = "";	// Longitude from googleAPI
+var homeState = "";	// State from googleAPI
+var campSites = [];	// camp sites set from campAPI
+var campName = "";	// name of site from camping api (is this needed here?)
 
-// other variables???
+//  FUNCTIONS
+//----------------------------------------------
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// function to get homeAddress from user input goess here
+// #search-bar.on("click", function(){
+// 	var homeAddress = form.val().trim();
+	// return homeAddress;
+// });
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+googleUrl("1582 mosaic way smryna ga 30080"); // Place holder for now, need to pass form input "homeAddress"
+
+function googleUrl(address) {
+  var googleURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + apiKey +"&callback=initMap";
+  googleAPI(googleURL);
+};
 
 // Initialize Google Map API
 function googleAPI(googleURL) {
@@ -31,41 +53,31 @@ function googleAPI(googleURL) {
 		dataType: "json",
 	}).done(function(response){
 		console.log(response);
-		// place functions to act on response
-		// parse json for lat/long coordinates to place markers
-		// determine distance from centralized "home" location?
-		// map route from "home" to campground site
 
-		// return lat and long for map marker function point for zoom
-		// return State var for buildCampUrl()
+		//  parsed data from google map api json
+		var homeLat = response.results[0].geometry.location.lat;
+		var homeLng = response.results[0].geometry.location.lng;
+		var homeLoc = {lat: homeLat, lng: homeLng};
+		
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++		
+		// isolate the State of homeAddress to pass to campAPI
+		// need to determine object response to get State code.
+		// var homeState = response.object.
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	});
-};
-
-//  Lukes function for building queryURL
-// function normalizeAddress(managedAddressList) {
-//   var queryURL = "";
-//   var totalAddresses = managedAddressList.length + 1;
-//   for (i = 0; i < managedAddressList.length; i++) {
-//     queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + managedAddressList[i].addressOnly + "&key=AIzaSyCGfpi9ypePqPq0RxKLxYzMyR3jvjcmSy4";
-//     queryAPI(i, queryURL, totalAddresses, finalAddress);
-//    };
-// };
-
-// Call buildCampUrl(state)  
-// Need to getState and pass to Luke.
-
+}
 
 // function intiats map, sets zoom location based on user input address, and creates markers for camp sites.
-// function initMap() {
-//         var uluru = {lat: -25.363, lng: 131.044};  // lat long generated from userInput google api ajax call
-//         var map = new google.maps.Map(document.getElementById('map'), {
-//           zoom: 4,
-//           center: uluru
-//         });
-//         var campSites = [{lat: -25.363, lng: 131.044},{lat: -26.689211, lng: 132.081134}];
-//         for(i=0; i < campSites.length; i++){var marker = new google.maps.Marker({
-//           position: campSites[i],
-//           map: map
-//         	});
-//         };
-//       }
+function initMap(googleAPI, campSites) {
+// lat long generated from userInput google api ajax call
+	var map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 7,
+		center: homeLoc
+});
+	//  campSites[] from campAPI json object
+	for(i=0; i < campSites.length; i++){var marker = new google.maps.Marker({
+		position: campSites[i],
+		map: map
+		});
+	};
+}
