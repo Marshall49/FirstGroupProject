@@ -11,8 +11,7 @@ function campAPI(campURL) {
 	        url: campURL,
 	        method: "GET",
 	        dataType: "xml",
-	        success: xmlParser,
-	        withCredentials: true,
+	        success: xmlParser
 	      })
 
 	function xmlParser(xml) {

@@ -3,8 +3,22 @@
 //  VARIABLES
 //----------------------------------------------
 
+// var baseURL = "";	// base url without query information
+// var queryURL = "";  // base url plus query information
+
+// var getLat = ""; 	// Latitude from camping api 
+// var getLong = "";	// Longitude from camping api
+// var getState = "";	// get state from user address
+// var campSite = "";  // composite of getLat and getLong
+// var campName = "";	// name of site from camping api (is this needed here?)
+
 //  Initialize vars for api connectivity
 var apiKey = "AIzaSyDewJP5LDBqFfsHhOFECYVRIjO6wS8uD9U";
+googleUrl("448 calhoun st nw atlanta ga 30318"); //pass form input
+function googleUrl(address) {
+  var googleURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + apiKey;
+  googleAPI(googleURL);
+};
 
 var homeAddress = "";	// home address from user input
 var homeLat = ""; 	// Latitude from googleAPI 
@@ -39,6 +53,7 @@ function googleAPI(googleURL) {
 		dataType: "json",
 	}).done(function(response){
 		console.log(response);
+
 		//  parsed data from google map api json
 		var homeLat = response.results[0].geometry.location.lat;
 		var homeLng = response.results[0].geometry.location.lng;
