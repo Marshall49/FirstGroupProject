@@ -38,9 +38,8 @@ function campAPI(campURL) {
 						sitesWithWaterHookup: $(this).attr("sitesWithWaterHookup"),
 						sitesWithWaterfront: $(this).attr("sitesWithWaterfront"),
 						state: $(this).attr("state")};
-
-			console.log(myJson);
 		});
+		console.log(myJson);
 	};
 };
 
