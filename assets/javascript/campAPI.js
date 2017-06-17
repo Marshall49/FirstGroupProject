@@ -1,10 +1,11 @@
 buildCampUrl("CO");
 function buildCampUrl(state) {
-  var campURL = "http://api.amp.active.com/camping/campgrounds?pstate=" + state + "&amenity=4001&sewer=3007&api_key=tevg8efq2e83yy8hzhhp99ns"
+  var campURL = "http://api.amp.active.com/camping/campgrounds?pstate=" + state + "&api_key=tevg8efq2e83yy8hzhhp99ns"
   campAPI(campURL);
 };
 
 var myJson = [];
+var campSites = [];
 function campAPI(campURL) {
 	$.ajax({
 	        url: campURL,
@@ -39,7 +40,13 @@ function campAPI(campURL) {
 						sitesWithWaterfront: $(this).attr("sitesWithWaterfront"),
 						state: $(this).attr("state")};
 		});
-		console.log(myJson);
+		for (i = 0; i < myJson.length; i++) {
+		    campSites.push({
+		    	lat: myJson[i].latitude,
+		    	lng: myJson[i].longitude
+		    });
+		} 
+		console.log(campSites);
 	};
 };
 
