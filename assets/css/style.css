@@ -119,6 +119,11 @@ a:hover { text-decoration: underline }
     height: 300px;
 }
 .main { margin-top: 50px }
+
+#map {
+  height: 400px;
+}
+
 input {
     font-family: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 13px;
