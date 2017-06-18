@@ -58,7 +58,7 @@ function googleAPI(googleURL) {
 }
 
 // function intiats map, sets zoom location based on user input address, and creates markers for camp sites.
-function initMap(campAPI) {
+function initMap(googleAPI, campAPI) {
 	// lat long generated from userInput google api ajax call
 		
 	// Log for testing delete later #####################3
