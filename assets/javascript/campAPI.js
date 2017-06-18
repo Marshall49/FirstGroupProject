@@ -15,6 +15,7 @@ function campAPI(campURL) {
 	      })
 
 	function xmlParser(xml) {
+		console.log(xml);
 		$(xml).find("result").each(function(i){
 			myJson[i] = {agencyIcon: $(this).attr("agencyIcon"),
 						agencyName: $(this).attr("agencyName"),
@@ -47,6 +48,7 @@ function campAPI(campURL) {
 		    });
 		} 
 		console.log(campSites);
+		console.log(myJson);
 	};
 };
 

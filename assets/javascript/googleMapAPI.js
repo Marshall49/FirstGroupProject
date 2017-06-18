@@ -24,7 +24,7 @@ var campName = "";		// name of site from camping api (is this needed here?)
 // });
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-googleUrl("1582 mosaic way smryna ga 30080"); // Place holder for now, need to pass form input "homeAddress"
+// googleUrl("1582 mosaic way smryna ga 30080"); // Place holder for now, need to pass form input "homeAddress"
 
 function googleUrl(address) {
   var googleURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + apiKey +"&callback=initMap";
