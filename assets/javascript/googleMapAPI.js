@@ -5,7 +5,7 @@
 
 //  Initialize vars for api connectivity
 var apiKey = "AIzaSyDewJP5LDBqFfsHhOFECYVRIjO6wS8uD9U";
-
+var state = ""			// state var from google for camp
 var homeAddress = "";	// home address from user input
 var homeLat = ""; 		// Latitude from googleAPI 
 var homeLng = "";		// Longitude from googleAPI
@@ -43,6 +43,7 @@ function googleAPI(googleURL) {
 		//  parsed data from api
 		var homeLat = response.results[0].geometry.location.lat;
 		var homeLng = response.results[0].geometry.location.lng;
+		stateGiver(response);
 		//	Set global homLoc to lat and lng from api
 		homeLoc = {lat: homeLat, lng: homeLng};
 		
@@ -79,3 +80,16 @@ function initMap(googleAPI, campAPI) {
 		});
 	};
 }
+
+function stateGiver(response) {
+  for (p = 0; p < response.results.length; p++) {
+    for (j = 0; j < response.results[p].address_components.length; j++) {
+      for (h = 0; h < response.results[p].address_components[j].types.length; h++) {
+        if (response.results[p].address_components[j].types[h] === "administrative_area_level_1") {
+          state = response.results[p].address_components[j].short_name;
+      	};
+      };
+    };
+  };
+  console.log(state);
+};
