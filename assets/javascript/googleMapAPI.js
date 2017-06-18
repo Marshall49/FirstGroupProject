@@ -7,11 +7,10 @@
 var apiKey = "AIzaSyDewJP5LDBqFfsHhOFECYVRIjO6wS8uD9U";
 
 var homeAddress = "";	// home address from user input
-var homeLat = ""; 	// Latitude from googleAPI 
-var homeLng = "";	// Longitude from googleAPI
-var homeState = "";	// State from googleAPI
-var campSites = [];	// camp sites set from campAPI
-var campName = "";	// name of site from camping api (is this needed here?)
+var homeLat = ""; 		// Latitude from googleAPI 
+var homeLng = "";		// Longitude from googleAPI
+var homeState = "";		// State from googleAPI
+var campName = "";		// name of site from camping api (is this needed here?)
 
 //  FUNCTIONS
 //----------------------------------------------
