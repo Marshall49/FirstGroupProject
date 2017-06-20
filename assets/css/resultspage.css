@@ -1,0 +1,143 @@
+body {
+background-color: white;
+
+}
+
+.container {
+	width: 100%;
+  min-width: 1020px;
+}
+
+.header-box{
+padding: 0em;
+height: 100px;
+color: white;
+background-color: #8FBC8F;
+opacity:0.7;
+font-size:30px;
+font-family: 'Bree Serif', serif;
+margin-left: -75px;
+margin-right: -75px;
+position: relative;
+
+}
+
+.logo {
+display: inline-block;
+float: left;
+padding: 0;
+}
+
+p {
+  display: inline-block;
+  float: left;
+  padding-top: 35px;
+  color: black;
+  font-size: 31px;
+}
+
+
+#results {
+  margin: 10px;
+  min-height: 700px;
+  padding: 10px;
+  width: 550px;
+}
+
+#map {
+  margin: 10px;
+  min-height: 300px;
+  padding: 10px;
+  background-color: white;
+  border: 3px solid;
+  opacity: 0.65;
+  width: 300px;
+  position: relative;
+}
+
+
+.container-1 input#search{
+  width: 300px;
+  height: 40px;
+  /*background: #E6E6FA;*/
+  border: none;
+  display: inline-block;
+  font-size: 10pt;
+  float: none;
+  /*color: #63717f;*/
+  padding-left: 45px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.box {
+  padding-top: 30px;
+  padding-right: 70px;
+  float: right;
+}
+
+#foot {
+  padding: 0em;
+  color: white;
+  background-color: #8FBC8F;
+  opacity:0.7;
+  font-size:30px;
+  font-family: 'Bree Serif', serif;
+  margin-left: -75px;
+  margin-right: -75px;
+  padding-left: 500px;
+}
+
+.icon {
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+  margin: 4px;
+  width: 96px;
+  height: 96px;
+  font-size: 0;
+  text-indent: -9999px;
+
+
+}
+
+.icon-mono {
+  background: url("../iconimg/icons3.png");
+  background-image: url("../iconimg/icons3.svg"), none;
+  background-color: #595959;
+  -webkit-transition: background 0.3s;
+          transition: background 0.3s;
+
+
+}
+
+/* facebook */
+.icon-mono.facebook {
+  background-position: 0 0;
+}
+
+.icon-mono.facebook:hover {
+  background-color: #3b5998;
+  background-position: 0 -96px;
+}
+
+/* twitter */
+.icon-mono.twitter {
+  background-position: -96px 0;
+}
+
+.icon-mono.twitter:hover {
+  background-color: #4099ff;
+  background-position: -96px -96px;
+}
+
+/* github */
+.icon-mono.github {
+  background-position: -288px 0;
+}
+
+.icon-mono.github:hover {
+  background-color: #333333;
+  background-position: -288px -96px;
+}
