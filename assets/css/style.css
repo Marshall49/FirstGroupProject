@@ -1,10 +1,3 @@
-/*body {
-  height: 100%;
-  width:100%;*/
-  /*background-color: black;*/
-  /*background-image: url(assets/images/img1.jpg);*/
-
-}
 
 .homepage-hero-module {
     border-right: none;
@@ -48,17 +41,6 @@
     width: 100%;
 }
 
-
-/*#state-list {
-  overflow: auto;
-}
-
-body {
-  color: #fff;
-  text-align: center;
-  display: table;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
-}*/
 .masthead-nav {
   position: absolute;
   top: 0px;
@@ -97,7 +79,6 @@ body {
   border-bottom-color: 	#228B22;
 }
 
-
 .text{
   font-family: 'Playfair Display SC', serif;
   font-size: 40px;
@@ -108,7 +89,6 @@ body {
   z-index: 1;
   color: white;
   text-shadow: 3px 3px #AA735C;
-
 }
 
 a:hover { text-decoration: underline }
@@ -132,7 +112,7 @@ input {
 }
 
 input[type=text] {
-    width: 150px;
+    width: 210px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
@@ -144,7 +124,6 @@ input[type=text] {
     padding: 12px 20px 12px 40px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
-
 }
 
 input[type=text]:focus {
