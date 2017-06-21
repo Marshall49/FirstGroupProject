@@ -3,6 +3,12 @@ var app = express();
 var request = require('request');
 var parseString = require('xml2js').parseString;
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-  With, Content-Type, Accept");
+    next();   
+});
+
 function buildCampUrl(state, res) {
   var campURL = "http://api.amp.active.com/camping/campgrounds?pstate=" +
     state.toUpperCase() +
@@ -44,3 +50,4 @@ app.get('/states/:state', function(req, res) {
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })
+
