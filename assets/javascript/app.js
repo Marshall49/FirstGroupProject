@@ -1,6 +1,6 @@
 $("#addressForm").submit( function(event) {
     event.preventDefault();
-    address = $("#addressInput").val();
+    var address = $("#addressInput").val();
     googleUrl(address);
     $("form").trigger("reset");
   });
