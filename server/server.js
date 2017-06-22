@@ -1,3 +1,9 @@
+//The code in this document is written in Node.js, a javascript library
+
+//List of module variables that are used for the below functions. A sever works by sitting on a host computer and
+//waiting for a request. Once a request arrives it will "serve" a responce. Node employess modules which are 
+//packages that supply functions to make the Node.js code easier/cleaner to write. The below varables set up "links"
+//to these module packages
 var express = require('express');
 var app = express();
 var request = require('request');

@@ -67,6 +67,11 @@ function stateGiver(response) {
 	buildPageTwo();
 };
 
+//This function queries the server and askes it to return a json object of all the campground geocoordinates
+//It does this in the same way as the googleAPI function by employeeing an ajax call and supplying a URL
+//of a specific format. This function takes in a two letter state code and builds this URL then send it to
+//the server. The server knows how to handle a specific URL and return the correct information becuase of the 
+//geocode portion of the URL
 function geoList(state) {
 	$.ajax( {
         url: "http://localhost:3000/geocode/" + state,
@@ -76,6 +81,8 @@ function geoList(state) {
     })	
 }
 
+//This function works exactly like the geoList function except this function has a slightly different URL
+//specifically geojason vs geocode. There server knows how to hadle this difference
 function geoJson(state) {
 	$.ajax( {
         url: "http://localhost:3000/geojson/" + state,
