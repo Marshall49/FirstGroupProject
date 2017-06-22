@@ -1,44 +1,50 @@
-
 .homepage-hero-module {
-    border-right: none;
-    border-left: none;
-    position: relative;
+  border-right: none;
+  border-left: none;
+  position: relative;
 }
+
 .no-video .video-container video,
 .touch .video-container video {
-    display: none;
+  display: none;
 }
+
 .no-video .video-container .poster,
 .touch .video-container .poster {
-    display: block !important;
+  display: block !important;
 }
+
 .video-container {
-    position: relative;
-    bottom: 0%;
-    left: 0%;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    background: #000;
+  position: relative;
+  bottom: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
 }
+
 .video-container .poster img {
-    width: 100%;
-    bottom: 0;
-    position: absolute;
+  width: 100%;
+  bottom: 0;
+  position: absolute;
 }
+
 .video-container .filter {
-    z-index: 100;
-    position: absolute;
-    background: rgba(0, 0, 0, 0.4);
-    width: 100%;
+  z-index: 100;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%;
 }
+
 .video-container video {
-    position: absolute;
-    z-index: 0;
-    bottom: 0;
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
 }
+
 .video-container video.fillWidth {
-    width: 100%;
+  width: 100%;
 }
 
 .masthead-nav {
@@ -54,9 +60,11 @@
   float: left;
   position: relative;
 }
+
 .masthead-nav > li + li {
   margin-left: 20px;
 }
+
 .masthead-nav > li > a {
   padding-right: 0;
   padding-left: 0;
@@ -66,6 +74,7 @@
   margin-top: 50px;
   color: #AA735C;
 }
+
 .masthead-nav > li > a:hover,
 .masthead-nav > li > a:focus {
   background-color: transparent;
@@ -73,6 +82,7 @@
   border-bottom-color: rgba(255,255,255,.25);
   color: #E5C799;
 }
+
 .masthead-nav > .active > a,
 .masthead-nav > .active > a:hover,
 .masthead-nav > .active > a:focus {
@@ -93,12 +103,15 @@
 
 a:hover { text-decoration: underline }
 .container, .main {
-    width: 640px;
-    margin-left: auto;
-    margin-right: auto;
-    height: 300px;
+  width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 300px;
 }
-.main { margin-top: 50px }
+
+.main { 
+  margin-top: 50px 
+}
 
 #map {
   height: 400px;
@@ -106,26 +119,26 @@ a:hover { text-decoration: underline }
 }
 
 input {
-    font-family: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 13px;
-    color: #555860;
+  font-family: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #555860;
 }
 
 input[type=text] {
-    width: 210px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: white;
-    background-image: url(../images/magnify.png);
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
+  width: 210px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url(../images/magnify.png);
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
 }
 
 input[type=text]:focus {
-    width: 40%;
+  width: 40%;
 }
