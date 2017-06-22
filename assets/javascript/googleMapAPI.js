@@ -6,29 +6,20 @@
 //  Initialize vars for api connectivity
 var apiKey = "AIzaSyDewJP5LDBqFfsHhOFECYVRIjO6wS8uD9U";
 var state = ""			// state var from google for camp
-var homeAddress = "";	// home address from user input
 var homeLat = ""; 		// Latitude from googleAPI 
 var homeLng = "";		// Longitude from googleAPI
 var homeLoc = [];		// Lat Long object for map centering
-var homeState = "";		// State from googleAPI
 var campName = "";		// name of site from camping api (is this needed here?)
 
 //  FUNCTIONS
 //----------------------------------------------
 
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// function to get homeAddress from user input goess here
-// #search-bar.on("click", function(){
-// 	var homeAddress = form.val().trim();
-	// return homeAddress;
-// });
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-// googleUrl("1582 mosaic way smryna ga 30080"); // Place holder for now, need to pass form input "homeAddress"
-
+// Builds google api query url
 function googleUrl(address) {
-  var googleURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + apiKey +"&callback=initMap";
+  var googleURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + apiKey + "&callback=initMap";
   googleAPI(googleURL);
+  // Log for testing delete later ####################
+  console.log(googleURL);
 };
 
 // Initialize Google Map API
@@ -40,40 +31,44 @@ function googleAPI(googleURL) {
 	}).done(function(response){
 		console.log(response);
 
-		//  parsed data from api
+		//  Latitude and Longitude from api
 		var homeLat = response.results[0].geometry.location.lat;
 		var homeLng = response.results[0].geometry.location.lng;
-		stateGiver(response);
+		
 		//	Set global homLoc to lat and lng from api
 		homeLoc = {lat: homeLat, lng: homeLng};
+		
+		stateGiver(response);
 		
 		// Log for testing  delete later ##############
 		console.log("homeLoc:");
 		console.log(homeLoc);
-		//++++++++++++++++++++++++++++++++++++++++++++++++++++++		
-		// isolate the State of homeAddress to pass to campAPI
-		// need to determine object response to get State code.
-		// var homeState = response.object.
-		//++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+		initMap();
+
 	});
 }
 
-// function intiats map, sets zoom location based on user input address, and creates markers for camp sites.
-function initMap(googleAPI, campAPI) {
-	// lat long generated from userInput google api ajax call
-		
-	// Log for testing delete later #####################3
+// function intiats googlemap
+function initMap() {	
+	// Log for testing delete later #########################
 	console.log("homeLoc initMap:");
 	console.log(homeLoc);
 
+	// sets zoom location
 	var map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 7,
+		//center: homeLoc
 		center: homeLoc
 });
+	// Log for testing delete later #########################
 	console.log("campSites initMap");
 	console.log(campSites);
+
+	//hard code for testing delete later #########################
+	var campSites = [{lat: 33.8794493, lng: -84.5064732}]; 
+	
 	//  campSites[] from campAPI json object
-	// var campSites = [{lat: 33.8794493, lng: -84.5064732}]; //hard code for testing############
 	for(i=0; i < campSites.length; i++){var marker = new google.maps.Marker({
 		position: campSites[i],
 		map: map
@@ -91,5 +86,6 @@ function stateGiver(response) {
       };
     };
   };
+  console.log("stateGiver: ");
   console.log(state);
 };

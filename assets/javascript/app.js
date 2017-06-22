@@ -12,10 +12,10 @@ var campName = "";		// name of site from camping api (is this needed here?)
 //submits it be pressing enter this function recognizes it and grabs the value from the input field (#addressInput)
 //the value is then assigned to the address varable and submitted to the google url function
 $("#addressForm").submit( function(event) {
-	event.preventDefault();
-    var address = $("#addressInput").val();
-	googleUrl(address);
-	$("form").trigger("reset");
+    event.preventDefault();							//prevents default action for submit function
+    var address = $("#addressInput").val().trim();	// Sets address to user input
+    googleUrl(address);								// Passes address to build google api query
+    $("form").trigger("reset");						// Reset form
 });
 
 //this function take in an address in string format and inserts it along with the apiKey variable into a 
