@@ -12,7 +12,7 @@ background-color: white;
 padding: 0em;
 height: 100px;
 color: white;
-background-color: #8FBC8F;
+background-color: #EEDEDB;
 opacity:0.7;
 font-size:30px;
 font-family: 'Bree Serif', serif;
@@ -21,6 +21,9 @@ margin-right: -75px;
 position: relative;
 
 }
+
+
+
 
 .logo {
 display: inline-block;
@@ -86,7 +89,7 @@ p {
   font-family: 'Bree Serif', serif;
   margin-left: -75px;
   margin-right: -75px;
-  padding-left: 500px;
+  padding-left: 100px;
   opacity: 0.7;
 }
 
@@ -95,8 +98,8 @@ p {
   vertical-align: top;
   overflow: hidden;
   margin: 4px;
-  width: 96px;
-  height: 96px;
+  width: 94px;
+  height: 94px;
   font-size: 0;
   text-indent: -9999px;
 
@@ -141,4 +144,61 @@ p {
 .icon-mono.github:hover {
   background-color: #333333;
   background-position: -288px -96px;
+}
+
+
+:before,
+:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+
+/* Clip text element */
+.clip-text {
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1;
+    position: relative;
+    display: inline-block;
+    margin: .10em;
+    padding: .5em .75em;
+    text-align: center;
+    color: #fff;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.clip-text:before,
+.clip-text:after {
+    position: absolute;
+    content: '';
+}
+
+/* Background */
+.clip-text:before {
+    z-index: -2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: inherit;
+    border-radius: 30px;
+}
+
+/* Text Background (black zone) */
+.clip-text:after {
+    position: absolute;
+    z-index: -1;
+    top: .125em;
+    right: .125em;
+    bottom: .125em;
+    left: .125em;
+    background-color: #FFF8DC;
+    border-radius: 30px;
+}
+
+.clip-text_one {
+    background-image: url(http://www.wildtextures.com/wp-content/uploads/2011/10/wildtextures-old-wood-original-file.jpg);
 }
