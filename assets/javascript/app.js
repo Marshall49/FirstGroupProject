@@ -64,6 +64,7 @@ function stateGiver(response) {
 	};
 	geoList(state);
 	geoJson(state);
+	// buildPageTwo();
 };
 
 function geoList(state) {
@@ -86,4 +87,9 @@ function geoJson(state) {
 
 function plotMap() {
 	
+}
+
+function buildPageTwo() {
+	$('#homepage-hero-module').empty();
+	$('#homepage-hero-module').html('<div class="container"><div class="header-box"><div class="logo"><center><img src="assets/images/logo.png" style="height:100px; width:100px;"></center></div><center><p>CAMPING HUBS</p></center><div class="box"><div class="container-1"><span class="object"><i class="fa fa-search"></i></span><input type="search" id="search" placeholder="Search..." /></div></div></div><div class="row"><div class="col-md-4 col-md-offset-1"><div id="results"><div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">Results</h3></div><div class="panel-body"></div></div></div></div><div class="col-md-4 col-md-offset-2"><div id="map"></div></div></div></div><div class="row"><div class="col-md-12"><div id="foot"><footer><a href="https://www.facebook.com/nationalparkservice/" class="icon icon-mono facebook"></a><a href="https://twitter.com/NatlParkService?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="icon icon-mono twitter"></a><a href="https://github.com/lchambers6/FirstGroupProject" class="icon icon-mono github"></a></footer></div></div></div>');
 }
