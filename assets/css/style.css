@@ -140,6 +140,7 @@ li {
 #map {
   height: 400px;
   background-color: none;
+  display: none;
 }
 
 input {
