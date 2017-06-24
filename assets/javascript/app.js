@@ -17,6 +17,7 @@ $("#addressForm").submit( function(event) {
     var address = $("#addressInput").val().trim();	// Sets address to user input
     googleUrl(address);								// Passes address to build google api query
     $("form").trigger("reset");						// Reset form
+    $("#map").css("display", "block");
 });
 
 //this function take in an address in string format and inserts it along with the apiKey variable into a
