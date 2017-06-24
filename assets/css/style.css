@@ -64,9 +64,26 @@ body .homepage-hero-module{
     width: 60%;
 }
 
-a {
+
+.no-button {
   color: white;
+  padding: 5px;
+  /*opacity: 0;*/
 }
+
+
+.no-button:hover {
+  color: white;
+  /*opacity: 0.5;*/
+  background-color: rgba(239, 241, 244, 0.5);
+  text-decoration: none;
+}
+
+
+
+
+
+
 
 
 /*.nav-inner {
