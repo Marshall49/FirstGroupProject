@@ -6,7 +6,8 @@ var state = ""			// state var from google for camp
 var homeAddress = "";	// home address from user input
 var homeLoc = [];		// Lat & Long object for map centering
 var homeState = "";		// State from googleAPI
-var campSites = [];	// name of site from camping api (is this needed here?)
+var campSites = [];		// location of site from camping api
+var campName = [];		// campsite name from camping api
 
 //when a person types an address in the in the search box form (#addressForm) on the fist page and
 //submits it be pressing enter this function recognizes it and grabs the value from the input field (#addressInput)
@@ -65,7 +66,7 @@ function stateGiver(response) {
 	  	};
 	  };
 	};
-	geoList(state);
+	// geoList(state);
 	geoJson(state);
 	// buildPageTwo();
 };
@@ -85,10 +86,10 @@ function geoList(state) {
         var lat = Number(response[i].lat);
         var lng = Number(response[i].long);
         campSites.push({'lat': lat, 'lng': lng});
+
+
         }
 
-        // console.log(response);
-        // console.log(campSites);
         initMap();
 
       }
@@ -103,6 +104,15 @@ function geoJson(state) {
         method: "GET",
         success: function(response){
         // console.log(response)
+        for (i = 0; i < response.length; i++) {
+        	var lat = Number(response[i].lat);
+        	var lng = Number(response[i].long);
+        	campSites.push({'lat': lat, 'lng': lng});
+
+        	campName.push(response[i].facilityName);
+    	}
+
+    	initMap();
       }
     })
 }
@@ -117,13 +127,9 @@ function plotMap() {
 // }
 
 function initMap() {
-	// Log for testing delete later #########################
-	// console.log("homeLoc initMap:");
-	// console.log(homeLoc);
-
 	// sets zoom location
 	var map = new google.maps.Map(document.getElementById('map'), {
-		zoom: 7,
+		zoom: 9,
 		//center: homeLoc
 		center: homeLoc
 });
@@ -131,13 +137,10 @@ function initMap() {
 	// console.log("campSites initMap");
 	console.log(campSites);
 
-	//hard code for testing delete later #########################
-	// var campSites = [{lat: 33.8794493, lng: -80.5064732}, {lat: 33.8794493, lng: -87.5064732}];
-// console.log(campSites);
-
 	//  campSites[] from campAPI json object
 	for(i=0; i < campSites.length; i++){var marker = new google.maps.Marker({
 		position: campSites[i],
+		title: campName[i],
 		map: map
 		});
 	};
