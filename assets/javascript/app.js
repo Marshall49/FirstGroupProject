@@ -43,11 +43,15 @@ function googleAPI(googleURL) {
 		method: "GET",			//We are choose to a GET request (there are other types of request)
 		dataType: "json",		//The data type to be returned
 	}).done(function(response){	//once the response from google has arrived call the .done callback function
-		var homeLat = response.results[0].geometry.location.lat; //go into the returned json and fethch the latitude via the given path ans assign it to a varable
-		var homeLng = response.results[0].geometry.location.lng; //go into the returned json and fethch the latitude via the given path ans assign it to a varable
-		homeLoc = {lat: homeLat, lng: homeLng}; //build an object with the lat and long information and assign it to the homeLoc Varable
-	   stateGiver(response); //send the reponse json to the the stateGiver function
+		if(response.status === "OK"){
 
+			var homeLat = response.results[0].geometry.location.lat; //go into the returned json and fethch the latitude via the given path ans assign it to a varable
+			var homeLng = response.results[0].geometry.location.lng; //go into the returned json and fethch the latitude via the given path ans assign it to a varable
+			homeLoc = {lat: homeLat, lng: homeLng}; //build an object with the lat and long information and assign it to the homeLoc Varable
+		   	stateGiver(response); //send the reponse json to the the stateGiver function
+	   	}else{
+	   		$("#map").html("<h3>Test</h3>");
+	   	}
   });
 
 
