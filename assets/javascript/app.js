@@ -140,7 +140,9 @@ function initMap() {
 	//  campSites[] from campAPI json object
 	for(i=0; i < campSites.length; i++){var marker = new google.maps.Marker({
 		position: campSites[i],
-		title: campName[i],
+		// title fix for special characters
+		title: he.decode(campName[i]),
+		icon: "assets/images/mapmarker.png",
 		map: map
 		});
 	};
