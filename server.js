@@ -15,6 +15,8 @@ app.use(function(req, res, next) {
     next();
 });
 
+app.use(express.static(path.join(__dirname)));
+
 function buildCampUrl(state, res, type) {
   var campURL = "http://api.amp.active.com/camping/campgrounds?pstate=" +
     state.toUpperCase() +
@@ -72,6 +74,10 @@ function campAPI(campURL, res, type) {
       xmlParser(str, res, type);
     });
 }
+
+app.get('/', function (req, res) {
+ res.sendFile(`${__dirname}/index.html`)
+})
 
 app.get('/', function (req, res) {
   res.send('You have reached the blank page.')
