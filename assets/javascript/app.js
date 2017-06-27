@@ -20,6 +20,10 @@ $("#addressForm").submit( function(event) {
     $("#map").css("display", "block");
 });
 
+$("#developers").on('click', function(){
+      $(".container").css("display", "block");
+
+})
 //this function take in an address in string format and inserts it along with the apiKey variable into a
 //predesignated url format designed by google. This url is assigned to a string variable googleURL which
 //is submitted to the googleAPI function
