@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- saved from url=(0077)https://s.codepen.io/Fr0znpixl/fullembedgrid/RrrZKx?type=embed&animations=run -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico">
+  <link rel="mask-icon" type="" href="https://production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111">
+  <title>CodePen - Button Submit With Progress Bar 01</title>
+  
+  
+  
+  
+      <style>
+        body{
+            background-color:#000;
+            margin: 0px;
+            height: 100%;
+            font-family: sans-serif;
+            font-size: 10px;
+            overflow: hidden;
+        }
+        #bodymovin{
+            width:640px;
+            height:360px;
+            background-color:#000;
+            display:block;
+            overflow: hidden;
+            transform: translate3d(0,0,0);
+            margin: auto;
+						cursor:pointer;
+        }
+    </style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+</head>
+
+<body translate="no">
+
+  <div id="bodymovin"></div>
+<!-- Press the button when loaded -->
+    <script src="./stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js"></script>
+
+  <script src="https://frozenpixels.net/dev/codepen/bodymovin/bodymovin.js"></script>
+<script src="https://frozenpixels.net/dev/codepen/bodymovin/button-data01.js"></script>
+<script src="./jquery.min.js"></script>
+
+    <script>
+    var animData = {
+        container: document.getElementById('bodymovin'),
+        renderer: 'svg',
+        loop: false,
+        autoplay: false,
+        animationData: animationData
+    };
+    var anim = bodymovin.loadAnimation(animData);
+	
+$( "#bodymovin" ).click(function() {
+ 			bodymovin.play();
+	});
+  //# sourceURL=pen.js
+  </script>
+
+  
+  
+
+
+
+ </body></html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!-- saved from url=(0077)https://s.codepen.io/keithchis/fullembedgrid/QjoqRO?type=embed&animations=run -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico">
+  <link rel="mask-icon" type="" href="https://production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111">
+  <title>CodePen - Social Sharing Button</title>
+  
+  
+  
+  <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+      <style>
+      body{
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: #2D3847;
+	background-size: cover;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+.share-button{
+   text-transform: uppercase;
+   border: 2px solid #fff;
+   display: inline-block;
+	position: absolute;
+	overflow: hidden;
+	width: 178px;
+	height: 40px;
+	top: 50%;
+	left: 50%;
+	text-transform: uppercase;
+	font-size: 14px;
+	-webkit-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
+}
+.share-button a{
+   color: white;
+	font-size: 12px;
+   display: block;
+   text-decoration: none;
+   font-weight: bold;
+   letter-spacing: 1px;
+   line-height: 26px;
+   padding: 7px 13px 7px 13px;
+}
+.share-button > a:after{
+   font-family: FontAwesome;
+   font-size: 14px;
+   color: white;
+   content: "\f064";
+   margin-left: 10px;
+}
+.share-button > a:hover,
+.share-button > a:hover:after,
+.share-button .icon-wrapper ul li a:hover i{
+	color: #e4e9ea;
+}
+.share-button .icon-wrapper ul li:last-child a:hover i{
+	color: red;
+}
+.share-button .icon-wrapper{
+    position: absolute;
+    left: -286px;
+    top: 0;
+    width: 286px;
+}
+
+.share-button .icon-wrapper > a{
+    display: inline-block;
+}
+.share-button a.hidden{
+    display: none;
+}
+.share-button.active .icon-wrapper{
+    max-height: 40px;
+}
+.share-button .icon-wrapper ul{
+    padding-left: 0;
+    margin: 0;
+    height: 40px;
+}
+.share-button .icon-wrapper ul:after{
+    clear: both;   
+}
+.share-button .icon-wrapper ul li{
+    float: left;
+    display: inline-block;
+}
+.share-button .icon-wrapper ul li:last-child{
+    float: right;
+}
+.share-button .icon-wrapper ul li a i{
+    color: white;
+    font-size: 14px;
+}
+.share-button .icon-wrapper ul li:last-child a{
+    background-color: white;
+}
+.share-button .icon-wrapper ul li:last-child a i{
+    color: #2d3847;
+    position: relative;
+    left: 1px;
+}
+    </style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+</head>
+
+<body translate="no">
+
+  <div class="share-button">
+                        <a href="https://s.codepen.io/keithchis/fullembedgrid/QjoqRO?type=embed&amp;animations=run#">Share this Post</a>
+                        <div class="icon-wrapper">
+                            <ul>
+                                <li><a target="_blank" href="https://twitter.com/share" data-url="{{ content.absolute_url }}"><i class="fa fa-twitter"></i></a></li>
+                                <li><a target="_blank" href="https://facebook.com/sharer/sharer.php?" data-url="{{ content.absolute_url }}"><i class="fa fa-facebook"></i></a></li>
+                                <li><a target="_blank" href="https://s.codepen.io/keithchis/fullembedgrid/QjoqRO?type=embed&amp;animations=run#" onclick="javascript:window.open(&#39;https://www.linkedin.com/shareArticle?mini=true&amp;url={{ content.absolute_url }}&amp;title=&#39;,&#39;popup&#39;,&#39;width=600,height=600&#39;);"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a target="_blank" href="https://plus.google.com/share?url={{%20content.absolute_url%20}}" onclick="javascript:window.open(this.href,&#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;);return false;"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="mailto:info@silvertech.com"><i class="fa fa-link"></i></a></li>
+                                <li><a href="https://s.codepen.io/keithchis/fullembedgrid/QjoqRO?type=embed&amp;animations=run#" class="close-social-icons"><i class="fa fa-times"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+    <script src="./stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js"></script>
+
+  <script src="./jquery.min.js"></script>
+
+    <script>
+    postShareButtonClick = $(function (){
+    var buttonWrapper = $(".share-button"),
+        button = $(".share-button > a"),
+        icons = $(".share-button > .icon-wrapper"),
+        close = $(".close-social-icons");
+    
+    function init(){
+        button.on("click", toggle);
+        close.on("click", closeIcons);
+    }
+    
+    function toggle(e){
+        if (buttonWrapper.hasClass("active")){
+            closeIcons();
+        } else{
+            openIcons();
+        }
+        e.preventDefault();
+    }
+    
+    function openIcons(){
+        buttonWrapper.addClass("active");
+        button.addClass("hidden");
+        buttonWrapper.animate({width: "286"}, 500);
+        icons.animate({left: "0"}, 500);
+    }
+    
+    function closeIcons(){
+        buttonWrapper.removeClass("active");
+		  button.removeClass("hidden");
+        icons.animate({left: "-286"}, 0);
+        buttonWrapper.animate({width: "178"}, 0);
+    }
+    
+    init();
+});
+  //# sourceURL=pen.js
+  </script>
+
+  
+  
+
+
+
+ </body></html>
