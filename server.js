@@ -6,6 +6,7 @@
 //to these module packages
 var express = require('express');
 var app = express();
+var path = require('path')
 var request = require('request');
 var parseString = require('xml2js').parseString;
 
@@ -76,11 +77,7 @@ function campAPI(campURL, res, type) {
 }
 
 app.get('/', function (req, res) {
- res.sendFile(`${__dirname}/index.html`)
-})
-
-app.get('/', function (req, res) {
-  res.send('You have reached the blank page.')
+  res.sendFile(`${__dirname}/index.html`)
 })
 
 app.get('/geocode/:state', function(req, res, type) {
@@ -92,5 +89,5 @@ app.get('/geojson/:state', function(req, res, type) {
 })
 
 app.listen(3000, function () {
-  console.log('Listening on port 3000!')
+  console.log('Example app listening on port 3000!')
 })
