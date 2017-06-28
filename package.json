@@ -13,8 +13,8 @@
     "request": "^2.81.0",
     "xml2js": "^0.4.17"
   },
-  "repository":{
-    "type":"git",
-    "url":"https://github.com/lchambers6/FirstGroupProject"
+  "engines": {
+    "node": "v6.10.2"
   }
+
 }
