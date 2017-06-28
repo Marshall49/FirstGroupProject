@@ -77,7 +77,7 @@ function stateGiver(response) {
 //geocode portion of the URL
 function geoList(state) {
 	$.ajax( {
-        url: "http://localhost:3000/geocode/" + state,
+        url: "https://campsites123.herokuapp.com//geocode/" + state,
         method: "GET",
         success: function(response){
         // console.log(response) ;
@@ -99,7 +99,7 @@ function geoList(state) {
 //specifically geojason vs geocode. There server knows how to hadle this difference
 function geoJson(state) {
 	$.ajax( {
-        url: "http://localhost:3000/geojson/" + state,
+        url: "https://campsites123.herokuapp.com//geojson/" + state,
         method: "GET",
         success: function(response){
         // console.log(response)
