@@ -70,11 +70,11 @@ body .homepage-hero-module{
 }
 
 
-.no-button:hover {
+/*.no-button:hover {
   color: white;
   background-color: rgba(239, 241, 244, 0.5);
   text-decoration: none;
-}
+}*/
 
 #logo {
   position: fixed;
@@ -170,15 +170,32 @@ input[type=text]:focus {
   font-size: 20px;
 }
 
-a:hover {
+.no-button:hover {
+  text-decoration: none;
+  padding: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: white;
+  background-color: rgba(239, 241, 244, 0.5);
+}
+.no-button:link .no-button:visited .no-button:hover .no-button:active .no-button {
+  color: white;
+}
+
+/*.no-button:a
+  color: white;
+}*/
+
+h3 {
+  font-family: 'Playfair Display SC', serif;
+}
+
+.bio-text:hover {
   color: #002C5C;
   background-color: rgba(239, 241, 244, 0.8);
   text-decoration: none;
   padding: 3px;
   padding-left: 5px;
   padding-right: 5px;
-}
 
-h3 {
-  font-family: 'Playfair Display SC', serif;
 }
