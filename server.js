@@ -77,7 +77,7 @@ function campAPI(campURL, res, type) {
 }
 
 app.get('/', function (req, res) {
- res.sendFile(`${__dirname}/index.html`)
+ res.render("index");
 })
 
 app.get('/geocode/:state', function(req, res, type) {
