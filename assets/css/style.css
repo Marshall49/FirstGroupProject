@@ -199,3 +199,70 @@ h3 {
   padding-right: 5px;
 
 }
+
+#foot {
+  padding: 0em;
+  color: white;
+  background-color: white;
+  opacity:0.7;
+  font-size:30px;
+  font-family: 'Bree Serif', serif;
+  margin-left: -75px;
+  margin-right: -75px;
+  padding-left: 100px;
+  opacity: 0.7;
+  width: 100%;
+  padding-left: 550px;
+}
+
+.icon {
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+  margin: 5px;
+  width: 90px;
+  height: 90px;
+  font-size: 0;
+
+
+}
+
+.icon-mono {
+  background: url("../iconimg/icons3.png");
+  background-image: url("../iconimg/icons3.svg"), none;
+  background-color: #595959;
+  -webkit-transition: background 0.3s;
+          transition: background 0.3s;
+
+
+}
+
+/* facebook */
+.icon-mono.facebook {
+  background-position: 0 0;
+}
+
+.icon-mono.facebook:hover {
+  background-color: #3b5998;
+  background-position: 0 -96px;
+}
+
+/* twitter */
+.icon-mono.twitter {
+  background-position: -96px 0;
+}
+
+.icon-mono.twitter:hover {
+  background-color: #4099ff;
+  background-position: -96px -96px;
+}
+
+/* github */
+.icon-mono.github {
+  background-position: -288px 0;
+}
+
+.icon-mono.github:hover {
+  background-color: #333333;
+  background-position: -288px -96px;
+}
