@@ -20,10 +20,18 @@ $("#addressForm").submit( function(event) {
     $("#map").css("display", "block");
 });
 
+
+//This function displays the Meet the Developers page once the user clicks the "Meet the Developers" button
 $("#developers").on('click', function(){
     console.log($(".container"));
       $(".container").css("display", "block");
 
+})
+
+
+//This Function scrolls to the top of the page
+$('#logo').on('click', function(){
+    $('html, body').animate({ scrollTop: 0 }, 'slow');
 })
 //this function take in an address in string format and inserts it along with the apiKey variable into a
 //predesignated url format designed by google. This url is assigned to a string variable googleURL which
