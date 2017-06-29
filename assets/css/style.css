@@ -178,9 +178,15 @@ input[type=text]:focus {
   color: white;
   background-color: rgba(239, 241, 244, 0.5);
 }
-.no-button:link .no-button:visited .no-button:hover .no-button:active .no-button {
+/*.no-button:link .no-button:visited .no-button:hover .no-button:active .no-button {
+  color: white;
+}*/
+
+.no-button:visited {
   color: white;
 }
+
+
 
 /*.no-button:a
   color: white;

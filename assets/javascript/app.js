@@ -23,9 +23,9 @@ $("#addressForm").submit( function(event) {
 
 //This function displays the Meet the Developers page once the user clicks the "Meet the Developers" button
 $("#developers").on('click', function(){
-    console.log($(".container"));
-      $(".container").css("display", "block");
-
+    $(".container").css("display", "block");
+    lastElementTop = $('.container').position().top ;
+    $('html, body').animate({ scrollTop: lastElementTop}, 'slow');
 })
 
 
@@ -99,7 +99,6 @@ function geoList(state) {
         url: "https://campsites123.herokuapp.com/geocode/" + state,
         method: "GET",
         success: function(response){
-        // console.log(response) ;
         for (i = 0; i < response.length; i++) {
         var lat = Number(response[i].lat);
         var lng = Number(response[i].long);
@@ -121,7 +120,6 @@ function geoJson(state) {
         url: "https://campsites123.herokuapp.com/geojson/" + state,
         method: "GET",
         success: function(response){
-        // console.log(response)
         for (i = 0; i < response.length; i++) {
         	var lat = Number(response[i].lat);
         	var lng = Number(response[i].long);
@@ -149,11 +147,11 @@ function initMap() {
 	var map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 9,
 		//center: homeLoc
-		center: homeLoc
+		center: homeLoc,
+    scrollwheel: false
 });
-	// Log for testing delete later #########################
-	// console.log("campSites initMap");
-	console.log(campSites);
+
+
 
 	//  campSites[] from campAPI json object
 	for(i=0; i < campSites.length; i++){var marker = new google.maps.Marker({
