@@ -1,8 +1,4 @@
 .DS_Store
 node_modules/
-<<<<<<< HEAD
-Reference.md
-=======
 assets/.DS_Store
 References.md
->>>>>>> 0fc902f6e30c18fb9100279ce3f1ce857d1be18e
