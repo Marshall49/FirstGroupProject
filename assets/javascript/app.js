@@ -23,6 +23,9 @@ $("#addressForm").submit( function(event) {
     googleUrl(address);								// Passes address to build google api query
     $("form").trigger("reset");						// Reset form
     $("#map").css("display", "block");
+    $("#map").css("display", "block");
+    lastElementTop = $('#map').position().top ;
+    $('html, body').animate({ scrollTop: lastElementTop}, 'slow');
 });
 
 
