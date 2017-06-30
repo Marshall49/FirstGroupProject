@@ -173,11 +173,17 @@ function initMap() {
 		center: homeLoc,
     scrollwheel: false
 });
-
+	//creates a marker for the searched address
+	var homeMarker = new google.maps.Marker({
+		position: homeLoc,
+		title: "Searched Address",
+		map: map
+		});
 
 
 	//  campSites[] from campAPI json object
-	for(i=0; i < campSites.length; i++){var marker = new google.maps.Marker({
+	for(i=0; i < campSites.length; i++){
+		var marker = new google.maps.Marker({
 		position: campSites[i],
 		// title fix for special characters
 		title: toTitleCase(he.decode(campName[i]).toLowerCase()),
