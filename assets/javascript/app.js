@@ -1,7 +1,7 @@
 //The code in this document is written in jQuery, a javascript library
 
 //List of global variables that are used for the below functions
-var apiKey = "AIzaSyDewJP5LDBqFfsHhOFECYVRIjO6wS8uD9U";
+var apiKey = "AIzaSyDewJP5LDBqFfsHhOFECYVRIjO6wS8uD9U"; //API key for the google API
 var state = ""			// state var from google for camp
 var homeAddress = "";	// home address from user input
 var homeLoc = [];		// Lat & Long object for map centering
@@ -17,34 +17,13 @@ var facilityPhoto = [];	// url for facilityPhoto from camping api
 //when a person types an address in the in the search box form (#addressForm) on the fist page and
 //submits it be pressing enter this function recognizes it and grabs the value from the input field (#addressInput)
 //the value is then assigned to the address varable and submitted to the google url function
-$("#addressForm").submit( function(event) {
+$("#addressForm").submit( function(event) {			//jQuery function which triggers when form is submitted
     event.preventDefault();							//prevents default action for submit function
-    var address = $("#addressInput").val().trim();	// Sets address to user input
-    googleUrl(address);								// Passes address to build google api query
-    $("form").trigger("reset");						// Reset form
-    $("#map").css("display", "block");
+    var address = $("#addressInput").val().trim();	//Sets address to user input
+    googleUrl(address);								//Passes address to build google api query
+    $("form").trigger("reset");						//Resets form
 });
 
-
-//This function displays the Meet the Developers page once the user clicks the "Meet the Developers" button
-$("#developers").on('click', function(){
-    $(".container").css("display", "block");
-    lastElementTop = $('.container').position().top ;
-    $('html, body').animate({ scrollTop: lastElementTop}, 'slow');
-})
-
-//This function displays the Resources page once the user clicks the "Resources" button
-$("#Resources").on('click', function(){
-    $(".Resources").css("display", "block");
-    lastElementTop = $('.Resources').position().top ;
-    $('html, body').animate({ scrollTop: lastElementTop}, 'slow');
-})
-
-
-//This Function scrolls to the top of the page
-$('#logo').on('click', function(){
-    $('html, body').animate({ scrollTop: 0 }, 'slow');
-})
 //this function take in an address in string format and inserts it along with the apiKey variable into a
 //predesignated url format designed by google. This url is assigned to a string variable googleURL which
 //is submitted to the googleAPI function
@@ -62,31 +41,35 @@ function googleUrl(address) {
 //it turns out the result parameter houses an array of objects. the first object is important to us so we reach
 //into the array using [] (response.result[0]) the next step down is another object so we use the . sytax to
 //access it (response.result[0].geometry) the next two levels are also objects so again we use the . syntax
-//to access them (response.results[0].geometry.location.lat) we do the same process to get the longitude
+//to access them (response.results[0].geometry.location.lat) we do the same process to get the longitude. 
+//If google can find the submitted address it the json will have a status of "OK" if no results are found
+//the status will equal "ZERO_RESULTS"
 function googleAPI(googleURL) {
 	$.ajax({					//Ajax is a jQuery function that send a request to the google API
 		url: googleURL,			//this is URL expected by the google API
 		method: "GET",			//We are choose to a GET request (there are other types of request)
 		dataType: "json",		//The data type to be returned
 	}).done(function(response){	//once the response from google has arrived call the .done callback function
-		if (response.status === "OK") {
-			if (findCountry(response).toUpperCase() === "US") { //Checks if address is in the US
-	      		$("#errorMessage").empty();
-	      		$("#map").empty();
-				var homeLat = response.results[0].geometry.location.lat; //go into the returned json and fethch the latitude via the given path ans assign it to a varable
-				var homeLng = response.results[0].geometry.location.lng; //go into the returned json and fethch the latitude via the given path ans assign it to a varable
+		if (response.status === "OK") { //Checks if the return json status is ok
+			if (findCountry(response).toUpperCase() === "US") { //Checks if address is in the US by using findcounty function
+	      		$("#errorMessage").empty(); //clears error message if present from #errorMessage
+	      		$("#map").empty(); //clears any content from #map
+				var homeLat = response.results[0].geometry.location.lat; //go into the returned json and fetch the latitude via the given path and assign it to a varable
+				var homeLng = response.results[0].geometry.location.lng; //go into the returned json and fetch the longitude via the given path and assign it to a varable
 				homeLoc = {lat: homeLat, lng: homeLng}; //build an object with the lat and long information and assign it to the homeLoc Varable
 			   	stateGiver(response); //send the reponse json to the the stateGiver function
-				$("#map").css("display", "block");
-			    lastElementTop = $('#map').position().top ;
-			    $('html, body').animate({ scrollTop: lastElementTop}, 'slow');
-			} else {
-				$("#errorMessage").html("<h2>Choose an Address in the US</h2>");
-        		$("#map").html("<h2>Choose an Address in the US</h2>");
+				$("#map").css("display", "block"); //displays map id
+			    lastElementTop = $('#map').position().top ; //finds position of map id
+			    $('html, body').animate({ scrollTop: lastElementTop}, 'slow'); //scrolls to position of map id
+			} else { //if address is not in US displays an error message
+				$("#errorMessage").html("<h2>Choose an Address in the US</h2>"); //displays error message
+        		$("#map").empty(); //clears any content from #map
+        		$("#map").hide(); //hides the map id
 			}
-	   	} else {
-	   		$("#errorMessage").html("<h2>Invalid Entry</h2>");
-        	$("#map").html("<h2>Invalid Entry</h2>");
+	   	} else { //if address is not a real address display error message
+	   		$("#errorMessage").html("<h2>Invalid Entry</h2>"); //displays error message
+	   		$("#map").empty(); //clears any content from #map
+        	$("#map").hide(); //hides the map id
 	   	}
   });
 }
@@ -215,3 +198,24 @@ function initMap() {
     })(marker,content,infowindow));
 	};
 }
+
+//This function displays the Meet the Developers page once the user clicks the "Meet the Developers" button
+$("#developers").on('click', function(){			//jQuery function which triggers when developers link clicked
+    $(".container").css("display", "block");		//displays the previously hidden container class block
+    lastElementTop = $('.container').position().top ; //finds the position of the container class and assigns to variable
+    $('html, body').animate({scrollTop: lastElementTop}, 'slow'); //scrolls to the position found in last line
+});
+
+//This function displays the Resources page once the user clicks the "Resources" button
+//works the exact same way as the previous Developers link
+$("#Resources").on('click', function(){
+    $(".Resources").css("display", "block");
+    lastElementTop = $('.Resources').position().top ;
+    $('html, body').animate({scrollTop: lastElementTop}, 'slow');
+});
+
+
+//This Function scrolls to the top of the page when click the camping icon in top left corner
+$('#logo').on('click', function(){					//jQuery function which triggers when camp icon is clicked
+    $('html, body').animate({ scrollTop: 0 }, 'slow'); //scrolls to position 0 (top of page)
+})
