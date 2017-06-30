@@ -187,6 +187,7 @@ function initMap() {
 	var homeMarker = new google.maps.Marker({
 		position: homeLoc,
 		title: "Searched Address",
+		icon: "assets/images/homeIcon.png",
 		map: map
 		});
 	
