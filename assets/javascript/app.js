@@ -23,9 +23,6 @@ $("#addressForm").submit( function(event) {
     googleUrl(address);								// Passes address to build google api query
     $("form").trigger("reset");						// Reset form
     $("#map").css("display", "block");
-    $("#map").css("display", "block");
-    lastElementTop = $('#map').position().top ;
-    $('html, body').animate({ scrollTop: lastElementTop}, 'slow');
 });
 
 
@@ -80,6 +77,9 @@ function googleAPI(googleURL) {
 				var homeLng = response.results[0].geometry.location.lng; //go into the returned json and fethch the latitude via the given path ans assign it to a varable
 				homeLoc = {lat: homeLat, lng: homeLng}; //build an object with the lat and long information and assign it to the homeLoc Varable
 			   	stateGiver(response); //send the reponse json to the the stateGiver function
+				$("#map").css("display", "block");
+			    lastElementTop = $('#map').position().top ;
+			    $('html, body').animate({ scrollTop: lastElementTop}, 'slow');
 			} else {
 				$("#errorMessage").html("<h2>Choose an Address in the US</h2>");
         		$("#map").html("<h2>Choose an Address in the US</h2>");
