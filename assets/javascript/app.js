@@ -64,23 +64,37 @@ function googleAPI(googleURL) {
 		method: "GET",			//We are choose to a GET request (there are other types of request)
 		dataType: "json",		//The data type to be returned
 	}).done(function(response){	//once the response from google has arrived call the .done callback function
-		if(response.status === "OK"){
-      $("#errorMessage").empty();
-      $("#map").empty();
-			var homeLat = response.results[0].geometry.location.lat; //go into the returned json and fethch the latitude via the given path ans assign it to a varable
-			var homeLng = response.results[0].geometry.location.lng; //go into the returned json and fethch the latitude via the given path ans assign it to a varable
-			homeLoc = {lat: homeLat, lng: homeLng}; //build an object with the lat and long information and assign it to the homeLoc Varable
-		   	stateGiver(response); //send the reponse json to the the stateGiver function
-	   	}else{
+		if (response.status === "OK") {
+			if (findCountry(response).toUpperCase() === "US") { //Checks if address is in the US
+	      		$("#errorMessage").empty();
+	      		$("#map").empty();
+				var homeLat = response.results[0].geometry.location.lat; //go into the returned json and fethch the latitude via the given path ans assign it to a varable
+				var homeLng = response.results[0].geometry.location.lng; //go into the returned json and fethch the latitude via the given path ans assign it to a varable
+				homeLoc = {lat: homeLat, lng: homeLng}; //build an object with the lat and long information and assign it to the homeLoc Varable
+			   	stateGiver(response); //send the reponse json to the the stateGiver function
+			} else {
+				$("#errorMessage").html("<h2>Choose an Address in the US</h2>");
+        		$("#map").html("<h2>Choose an Address in the US</h2>");
+			}
+	   	} else {
 	   		$("#errorMessage").html("<h2>Invalid Entry</h2>");
-        $("#map").html("<h2>Invalid Entry</h2>");
+        	$("#map").html("<h2>Invalid Entry</h2>");
 	   	}
   });
-
-
 }
 
-//this function takes in a json object retuned from a GoogleMaps API call and finds the two letter state code
+function findCountry(response) {
+	for (j = 0; j < response.results[0].address_components.length; j++) {
+	  for (h = 0; h < response.results[0].address_components[j].types.length; h++) {
+	    if (response.results[0].address_components[j].types[h] === "country") {
+	      country = response.results[0].address_components[j].short_name;
+	  	};
+	  };
+	};
+	return country;
+};
+
+//This function takes in a json object retuned from a GoogleMaps API call and finds the two letter state code
 //we have to use a double for loop to search through the json for the state code it searches through each address
 //componant (first loop) then searches through each address componant type (second loop) and find the address
 //componant type of "administrative_area_level_1" then sets the short name of the corresponding address componant
@@ -95,7 +109,6 @@ function stateGiver(response) {
 	};
 	// geoList(state);
 	geoJson(state);
-	// buildPageTwo();
 };
 
 //This function queries the server and askes it to return a json object of all the campground geocoordinates
