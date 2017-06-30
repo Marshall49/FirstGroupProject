@@ -44,7 +44,7 @@ function xmlParser(rawXml, res, type) {
           'facilityName': obj['$'].facilityName,
           'State': obj['$'].State,
           'Park': obj['$'].Park,
-          'faciltyPhoto': obj['$'].faciltyPhoto,
+          'facilityPhoto': obj['$'].faciltyPhoto,
           'favorite': obj['$'].favorite,
           'lat': obj['$'].latitude,
           'listingOnly': obj['$'].listingOnly,

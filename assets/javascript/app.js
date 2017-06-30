@@ -8,6 +8,11 @@ var homeLoc = [];		// Lat & Long object for map centering
 var homeState = "";		// State from googleAPI
 var campSites = [];		// location of site from camping api
 var campName = [];		// campsite name from camping api
+var petsAllowed = [];	// petsAllowed info from camping api
+var sewerHookup = [];	// sewerHookup info from camping api
+var waterHookup = [];	// waterHookup info from camping api
+var waterFront = [];	// waterFront info from camping api
+var facilityPhoto = [];	// url for facilityPhoto from camping api
 
 //when a person types an address in the in the search box form (#addressForm) on the fist page and
 //submits it be pressing enter this function recognizes it and grabs the value from the input field (#addressInput)
@@ -125,12 +130,8 @@ function geoList(state) {
         var lat = Number(response[i].lat);
         var lng = Number(response[i].long);
         campSites.push({'lat': lat, 'lng': lng});
-
-
         }
-
         initMap();
-
       }
     })
 }
@@ -146,17 +147,26 @@ function geoJson(state) {
         	var lat = Number(response[i].lat);
         	var lng = Number(response[i].long);
         	campSites.push({'lat': lat, 'lng': lng});
-
         	campName.push(response[i].facilityName);
+        	petsAllowed.push(convertYesNo(response[i].petsAllowed));
+        	sewerHookup.push(convertYesNo(response[i].sewerHookup));
+        	waterHookup.push(convertYesNo(response[i].waterHookup));
+        	waterFront.push(convertYesNo(response[i].waterFront));
+        	facilityPhoto.push(response[i].facilityPhoto)
     	}
-
     	initMap();
       }
     })
 }
 
-function plotMap() {
-
+function convertYesNo(str) {
+	if(str === "Y") {
+		return "Yes"
+	} else if (str === "N") {
+		return "No"
+	} else {
+		return "Unknown"
+	}
 }
 
 function toTitleCase(str) {
@@ -171,24 +181,33 @@ function initMap() {
 		zoom: 9,
 		//center: homeLoc
 		center: homeLoc,
-    scrollwheel: false
-});
+    	scrollwheel: false
+	});
 	//creates a marker for the searched address
 	var homeMarker = new google.maps.Marker({
 		position: homeLoc,
 		title: "Searched Address",
 		map: map
 		});
-
-
+	
 	//  campSites[] from campAPI json object
 	for(i=0; i < campSites.length; i++){
+		var siteName = toTitleCase(he.decode(campName[i]).toLowerCase());
 		var marker = new google.maps.Marker({
 		position: campSites[i],
 		// title fix for special characters
-		title: toTitleCase(he.decode(campName[i]).toLowerCase()),
+		title: siteName,
 		icon: "assets/images/mapmarker.png",
 		map: map
 		});
+		console.log(facilityPhoto)
+		var content = "<div style='text-align:left;'><div style='font-size:15px;font-weight: bold;'>Name: " + siteName + "</div>" + "<img src='http://www.reserveamerica.com/"+ facilityPhoto[i] + "'>" + "<br>Pets Allowed: " + petsAllowed[i] + "<br>Sewer Hookup: " + sewerHookup[i] + "<br>Water Hookup: " + waterHookup[i] + "<br>Water Front: " + waterFront[i] + "</div>";
+		var infowindow = new google.maps.InfoWindow();
+		google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+        return function() {
+           infowindow.setContent(content);
+           infowindow.open(map,marker);
+        };
+    })(marker,content,infowindow));
 	};
 }
