@@ -28,6 +28,13 @@ $("#developers").on('click', function(){
     $('html, body').animate({ scrollTop: lastElementTop}, 'slow');
 })
 
+//This function displays the Resources page once the user clicks the "Resources" button
+$("#Resources").on('click', function(){
+    $(".Resources").css("display", "block");
+    lastElementTop = $('.Resources').position().top ;
+    $('html, body').animate({ scrollTop: lastElementTop}, 'slow');
+})
+
 
 //This Function scrolls to the top of the page
 $('#logo').on('click', function(){
@@ -58,13 +65,15 @@ function googleAPI(googleURL) {
 		dataType: "json",		//The data type to be returned
 	}).done(function(response){	//once the response from google has arrived call the .done callback function
 		if(response.status === "OK"){
-
+      $("#errorMessage").empty();
+      $("#map").empty();
 			var homeLat = response.results[0].geometry.location.lat; //go into the returned json and fethch the latitude via the given path ans assign it to a varable
 			var homeLng = response.results[0].geometry.location.lng; //go into the returned json and fethch the latitude via the given path ans assign it to a varable
 			homeLoc = {lat: homeLat, lng: homeLng}; //build an object with the lat and long information and assign it to the homeLoc Varable
 		   	stateGiver(response); //send the reponse json to the the stateGiver function
 	   	}else{
-	   		$("#map").html("<h3>Test</h3>");
+	   		$("#errorMessage").html("<h2>Invalid Entry</h2>");
+        $("#map").html("<h2>Invalid Entry</h2>");
 	   	}
   });
 
@@ -137,10 +146,11 @@ function plotMap() {
 
 }
 
-// function buildPageTwo() {
-// 	$('body').empty();
-// 	$('body').html('<div class="container"><div class="header-box"><div class="logo"><center><img src="assets/images/logo.png" style="height:100px; width:100px;"></center></div><center><p>CAMPING HUBS</p></center><div class="box"><div class="container-1"><span class="object"><i class="fa fa-search"></i></span><input type="search" id="search" placeholder="Search..." /></div></div></div><div class="row"><div class="col-md-4 col-md-offset-1"><div id="results"><div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">Results</h3></div><div class="panel-body"></div></div></div></div><div class="col-md-4 col-md-offset-2"><div id="map"></div></div></div></div><div class="row"><div class="col-md-12"><div id="foot"><footer><a href="https://www.facebook.com/nationalparkservice/" class="icon icon-mono facebook"></a><a href="https://twitter.com/NatlParkService?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="icon icon-mono twitter"></a><a href="https://github.com/lchambers6/FirstGroupProject" class="icon icon-mono github"></a></footer></div></div></div>');
-// }
+function toTitleCase(str) {
+    return str.replace(/(?:^|\s)\w/g, function(match) {
+        return match.toUpperCase();
+    });
+}
 
 function initMap() {
 	// sets zoom location
@@ -157,7 +167,7 @@ function initMap() {
 	for(i=0; i < campSites.length; i++){var marker = new google.maps.Marker({
 		position: campSites[i],
 		// title fix for special characters
-		title: he.decode(campName[i]),
+		title: toTitleCase(he.decode(campName[i]).toLowerCase()),
 		icon: "assets/images/mapmarker.png",
 		map: map
 		});

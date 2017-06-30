@@ -93,7 +93,7 @@ li {
 }
 
 .text{
-  font-family: 'Playfair Display SC', serif;
+  font-family: 'Playfair Display SC',serif;
   font-size: 40px;
   position: absolute;
   top: 170px;
@@ -109,6 +109,7 @@ li {
   height: 400px;
   background-color: none;
   display: none;
+  text-align: center;
 }
 
 input {
@@ -187,7 +188,11 @@ input[type=text]:focus {
 }
 
 
-
+#errorMessage {
+  color: white;
+  font-family: 'Fjalla One';
+  padding-top: 10px;
+}
 /*.no-button:a
   color: white;
 }*/
