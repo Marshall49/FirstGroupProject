@@ -91,5 +91,5 @@ app.get('/geojson/:state', function(req, res, type) {
 app.set('port', (process.env.PORT || 5000));
 
 app.listen(app.get('port'), function () {
-  console.log('Example app listening on port ' + app.get('port'));
+  console.log('CampSite app listening on port ' + app.get('port'));
 })

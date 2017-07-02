@@ -1,4 +1,4 @@
-
+//This document is used to display the moving background of the website
 $( document ).ready(function() {
 
     scaleVideoContainer();
@@ -41,8 +41,6 @@ function scaleBannerVideoSize(element){
     windowHeight = $(window).height() + 5,
     videoWidth,
     videoHeight;
-
-    // console.log(windowHeight);
 
     $(element).each(function(){
         var videoAspectRatio = $(this).data('height')/$(this).data('width');
