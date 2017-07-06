@@ -62,7 +62,7 @@ function googleAPI(googleURL) {
 			    lastElementTop = $('#map').position().top ; //finds position of map id
 			    $('html, body').animate({ scrollTop: lastElementTop}, 'slow'); //scrolls to position of map id
 			} else { //if address is not in US displays an error message
-				$("#errorMessage").html("<h2>Choose an Address in the US</h2>"); //displays error message
+				$("#errorMessage").html("<h2>Choose an address in the US</h2>"); //displays error message
         		$("#map").empty(); //clears any content from #map
         		$("#map").hide(); //hides the map id
 			}
