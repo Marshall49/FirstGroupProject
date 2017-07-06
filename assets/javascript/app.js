@@ -41,7 +41,7 @@ function googleUrl(address) {
 //it turns out the result parameter houses an array of objects. the first object is important to us so we reach
 //into the array using [] (response.result[0]) the next step down is another object so we use the . sytax to
 //access it (response.result[0].geometry) the next two levels are also objects so again we use the . syntax
-//to access them (response.results[0].geometry.location.lat) we do the same process to get the longitude. 
+//to access them (response.results[0].geometry.location.lat) we do the same process to get the longitude.
 //If google can find the submitted address it the json will have a status of "OK" if no results are found
 //the status will equal "ZERO_RESULTS"
 function googleAPI(googleURL) {
@@ -52,24 +52,24 @@ function googleAPI(googleURL) {
 	}).done(function(response){	//once the response from google has arrived call the .done callback function
 		if (response.status === "OK") { //Checks if the return json status is ok
 			if (findCountry(response).toUpperCase() === "US") { //Checks if address is in the US by using findcounty function
-	      		$("#errorMessage").empty(); //clears error message if present from #errorMessage
-	      		$("#map").empty(); //clears any content from #map
+    		$("#errorMessage").empty(); //clears error message if present from #errorMessage
+    		$("#map").empty(); //clears any content from #map
 				var homeLat = response.results[0].geometry.location.lat; //go into the returned json and fetch the latitude via the given path and assign it to a varable
 				var homeLng = response.results[0].geometry.location.lng; //go into the returned json and fetch the longitude via the given path and assign it to a varable
 				homeLoc = {lat: homeLat, lng: homeLng}; //build an object with the lat and long information and assign it to the homeLoc Varable for the submitted address
-			   	stateGiver(response); //send the reponse json to the the stateGiver function
+			  stateGiver(response); //send the reponse json to the the stateGiver function
 				$("#map").css("display", "block"); //displays map id
-			    lastElementTop = $('#map').position().top ; //finds position of map id
-			    $('html, body').animate({ scrollTop: lastElementTop}, 'slow'); //scrolls to position of map id
+			  lastElementTop = $('#map').position().top ; //finds position of map id
+			  $('html, body').animate({ scrollTop: lastElementTop}, 'slow'); //scrolls to position of map id
 			} else { //if address is not in US displays an error message
 				$("#errorMessage").html("<h2>Choose an Address in the US</h2>"); //displays error message
-        		$("#map").empty(); //clears any content from #map
-        		$("#map").hide(); //hides the map id
+        $("#map").empty(); //clears any content from #map
+        $("#map").hide(); //hides the map id
 			}
-	   	} else { //if address is not a real address display error message
+    } else { //if address is not a real address display error message
 	   		$("#errorMessage").html("<h2>Invalid Entry</h2>"); //displays error message
 	   		$("#map").empty(); //clears any content from #map
-        	$("#map").hide(); //hides the map id
+        $("#map").hide(); //hides the map id
 	   	}
   });
 }
@@ -124,8 +124,8 @@ function geoList(state) {
 }
 
 //This function works exactly like the geoList function except this function has a slightly different URL
-//specifically geojason vs geocode. There server knows how to hadle this difference. This function also 
-//takes the json returned from the server and parses it and fills up some global array variables which 
+//specifically geojason vs geocode. There server knows how to hadle this difference. This function also
+//takes the json returned from the server and parses it and fills up some global array variables which
 //are later used to fill in the information about the campsites when clicked on the map
 function geoJson(state) {
 	$.ajax( {
@@ -160,7 +160,7 @@ function convertYesNo(str) { //function takes in a string
 	}
 }
 
-//This functions takes in string of all lowercase letters and returns that string in titlecase 
+//This functions takes in string of all lowercase letters and returns that string in titlecase
 //(First letter of each word capitalized)
 function toTitleCase(str) {
     return str.replace(/(?:^|\s)\w/g, function(match) { //searches a string spaces (\s) and new words (\w)
@@ -168,21 +168,21 @@ function toTitleCase(str) {
     });
 }
 
-//This function intializes the google map in the DOM which will be filled with marker icons 
+//This function intializes the google map in the DOM which will be filled with marker icons
 function initMap() {
 	var map = new google.maps.Map(document.getElementById('map'), { //looks for id in the HTML named map and sets it to display the google map
 		zoom: 9, //sets zoom for this google map
 		center: homeLoc, //centers the map on the gps coordinates for the submited address
     	scrollwheel: false //prevents the map from sooming with the mouse scrool wheel
 	});
-	
+
 	var homeMarker = new google.maps.Marker({ //creates a marker for the submited address
 		position: homeLoc, //places a marker on the gps coordinates saved in the homeLoc object (the submitted address)
 		title: "Searched Address", //this title presented when you hover over the icon for the submitted address
 		icon: "assets/images/homeIcon.png", //uses this image for the icon of the submitted address
 		map: map //sets the map to displayed the map generated above
 	});
-	
+
 	for(i=0; i < campSites.length; i++){ //this loop searches thought the arrays filled in the geojson function and fills in the information to be displayed on the map
 		var siteName = toTitleCase(he.decode(campName[i]).toLowerCase()); //takes ith element from the campName array and changes it to lowercase then uses the he.js library of function (extrally downloaded) and convert char numbers to their corresponding characters then pases it to the titlecase function and assigns it to a variable
 		var marker = new google.maps.Marker({ //makes a marker to be used for the ith element of the campSites array
