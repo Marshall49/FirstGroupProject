@@ -51,9 +51,6 @@ function scaleBannerVideoSize(element){
             $(this).css({'margin-top' : 0, 'margin-left' : -(videoWidth - windowWidth) / 2 + 'px'});
 
             $(this).width(videoWidth).height(videoHeight);
-        } else {
-            initBannerVideoSize('.video-container video');
-        }
-
+        } 
     });
 }
